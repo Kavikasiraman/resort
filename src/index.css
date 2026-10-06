@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@theme {
+  --color-forest: #14281f;
+  --color-moss: #1f3d2e;
+  --color-cream: #f3ecdc;
+  --color-gold: #c2a15a;
+  --color-mist: #dfe6df;
+  --font-display: Fraunces, Georgia, serif;
+  --font-sans: Outfit, system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { @apply bg-cream font-sans text-forest antialiased; }
+h1, h2, h3 { @apply font-display font-normal leading-tight; }
+:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 3px; }
+.btn { @apply inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 font-medium text-forest transition hover:brightness-110; }
+.btn-ghost { @apply bg-transparent text-current ring-1 ring-current hover:bg-white/10; }
+
+/* Hero motion: slow pan/zoom on the active slide, endless photo strip */
+@keyframes kb { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.14) translate(-2%, -1.5%); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.kb { animation: kb 9s ease-out forwards; }
+.marquee { animation: marquee 50s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .kb, .marquee { animation: none; } html { scroll-behavior: auto; } }
+html { scroll-padding-top: 4rem; }
+body { overflow-x: clip; }
